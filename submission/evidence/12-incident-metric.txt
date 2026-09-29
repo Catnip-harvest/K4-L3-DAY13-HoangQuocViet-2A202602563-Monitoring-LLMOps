@@ -1,0 +1,10 @@
+# GET /metrics at 2026-09-29T09:19:27Z (in-memory, since server start 09:18)
+{"traffic":25,"latency_p50":153.0,"latency_p95":2653.0,"latency_p99":2654.0,"ttft_p95":50.0,"avg_cost_usd":0.0021,"total_cost_usd":0.0515,"tokens_in_total":851,"tokens_out_total":3261,"error_breakdown":{},"quality_avg":0.872}
+
+# Per-minute breakdown from data/logs.jsonl (response_sent)
+minute_utc | feature | n | p50_ms | p95_ms | p99_ms | ttft_p95_ms | over_2000ms_threshold | errors
+09:18 | qa | 16 | 152 | 725 | 725 | 51 | 0/16 | 0
+09:18 | summary | 4 | 152 | 153 | 153 | 50 | 0/4 | 0
+09:19 | monitoring | 5 | 2653 | 2654 | 2654 | 50 | 5/5 | 0
+
+# After mitigation (feature=monitoring, same 5 challenge queries): n=5 p50=153 ms p95=153 ms

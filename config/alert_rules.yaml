@@ -1,25 +1,36 @@
 alerts:
-  - name: TODO_alert_1
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: slow_responses_p95
+    severity: P2
+    condition: 'p95(latency_ms where event == "response_sent") > 2000 over a rolling 5m window'
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
+    slack_channel: '#day13-l3a-oncall'
+    owner: Hoang Quoc Viet (primary on-call)
+    slo: fast_successful_requests
     runbook: docs/alerts.md#alert-1
-  - name: TODO_alert_2
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: high_error_rate
+    severity: P1
+    condition: >-
+      count(event == "request_failed") / count(event == "request_received") * 100 > 2
+      over a rolling 5m window with at least 5 requests,
+      or retrieval success (tool_success == true) < 90%
+    duration: 5m
     type: symptom-based
     channel: slack
-    owner: TODO
+    slack_channel: '#day13-l3a-oncall'
+    owner: Hoang Quoc Viet (primary on-call)
+    slo: fast_successful_requests
     runbook: docs/alerts.md#alert-2
-  - name: TODO_alert_3
-    severity: TODO
-    condition: TODO
-    duration: TODO
+  - name: cost_per_request_spike
+    severity: P2
+    condition: >-
+      avg(cost_usd where event == "response_sent") > 0.004 USD over a rolling 15m window
+      (2x the 0.00195 USD baseline), or sum(cost_usd) over 1h > 0.104 USD (daily 2.5 USD budget / 24)
+    duration: 15m
     type: symptom-based
     channel: slack
-    owner: TODO
+    slack_channel: '#day13-l3a-oncall'
+    owner: Hoang Quoc Viet (primary on-call)
+    slo: guardrails.daily_cost_usd_max
     runbook: docs/alerts.md#alert-3

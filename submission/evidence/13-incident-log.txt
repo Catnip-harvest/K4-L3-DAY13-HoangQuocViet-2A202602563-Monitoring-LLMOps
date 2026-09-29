@@ -1,0 +1,14 @@
+# Filter: data/logs.jsonl, event == response_sent, ts in 09:19 UTC, latency_ms > 2000 (challenge threshold)
+ts | correlation_id | trace_id | feature | latency_ms | ttft_ms | tokens_in/out | tool_success
+2026-09-29T09:19:05.854015Z | req-64e0fe07 | ea0bf2807430d4ed9aa1316a2289698c | monitoring | 2653 | 50 | 36/113 | True
+2026-09-29T09:19:08.511879Z | req-0157e290 | debf3ff920a12cd6681d0cb14260cc68 | monitoring | 2653 | 50 | 35/91 | True
+2026-09-29T09:19:11.170761Z | req-2122c23a | 6b561cd6b2086788cf5042df58803149 | monitoring | 2654 | 50 | 34/94 | True
+2026-09-29T09:19:13.827945Z | req-b2b6ebd0 | 0a4e279e54bed31765598b126c222a26 | monitoring | 2653 | 50 | 35/119 | True
+2026-09-29T09:19:16.486072Z | req-06aa77ee | ca0c6f94308791a8a3d290fcee2dc309 | monitoring | 2653 | 50 | 35/157 | True
+
+# Chosen request: req-64e0fe07 - full log lines for it:
+{"service": "api", "payload": {"message_preview": "Which signal should be checked after latency increases?"}, "event": "request_received", "user_id_hash": "4570299f37e2", "model": "claude-sonnet-4-5", "env": "dev", "feature": "monitoring", "session_id": "k4-l3a-challenge-s04", "correlation_id": "req-64e0fe07", "level": "info", "ts": "2026-09-29T09:19:03.198456Z"}
+{"service": "api", "latency_ms": 2653, "ttft_ms": 50, "tokens_in": 36, "tokens_out": 113, "cost_usd": 0.001803, "quality_score": 0.9, "tool_name": "retrieval", "tool_success": true, "payload": {"answer_preview": "Starter answer. You should improve this output logic and add better quality chec..."}, "event": "response_sent", "user_id_hash": "4570299f37e2", "model": "claude-sonnet-4-5", "env": "dev", "trace_id": "ea0bf2807430d4ed9aa1316a2289698c", "feature": "monitoring", "session_id": "k4-l3a-challenge-s04", "correlation_id": "req-64e0fe07", "level": "info", "ts": "2026-09-29T09:19:05.854015Z"}
+
+# Control event in the same window:
+{"service": "control", "payload": {"name": "rag_slow"}, "event": "incident_enabled", "correlation_id": "req-9a5ef9c3", "level": "warning", "ts": "2026-09-29T09:19:02.602270Z"}

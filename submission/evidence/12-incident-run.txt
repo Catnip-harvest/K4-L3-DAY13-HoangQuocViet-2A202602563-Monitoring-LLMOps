@@ -1,0 +1,31 @@
+## 2026-09-29T09:18:27Z phase 1: normal traffic (data/sample_queries.jsonl, concurrency 5)
+[200] req-b13b15eb | qa | 1245.7ms
+[200] req-af56aba5 | qa | 1399.8ms
+[200] req-f014f70c | qa | 1556.6ms
+[200] req-f87eb199 | qa | 1560.3ms
+[200] req-cf4d087a | summary | 1560.3ms
+[200] req-0578ac32 | summary | 787.6ms
+[200] req-ad140c19 | qa | 632.2ms
+[200] req-35e9cd70 | qa | 630.7ms
+[200] req-3e874c23 | qa | 629.8ms
+[200] req-744b21dc | qa | 786.9ms
+[200] req-45493fb4 | qa | 638.0ms
+[200] req-2bdfd7e1 | qa | 794.0ms
+## 2026-09-29T09:19:02Z phase 2: official challenge
+200 {'ok': True, 'incidents': {'rag_slow': True, 'tool_fail': False, 'cost_spike': False}}
+Challenge: day13-k4-l3a-monitoring-llmops-v1 | Cohort: K4
+[200] req-64e0fe07 | monitoring | 10645.3ms
+[200] req-0157e290 | monitoring | 13303.0ms
+[200] req-2122c23a | monitoring | 13302.0ms
+[200] req-b2b6ebd0 | monitoring | 13304.0ms
+[200] req-06aa77ee | monitoring | 13302.8ms
+## 2026-09-29T09:19:16Z incident ends (API state)
+{"ok":true,"tracing_enabled":true,"incidents":{"rag_slow":true,"tool_fail":false,"cost_spike":false}}
+## 2026-09-29T09:21:02Z phase 3: mitigation (disable incident) + same challenge queries
+200 {'ok': True, 'incidents': {'rag_slow': False, 'tool_fail': False, 'cost_spike': False}}
+Challenge: day13-k4-l3a-monitoring-llmops-v1 | Cohort: K4
+[200] req-55676098 | monitoring | 642.4ms
+[200] req-3f29962a | monitoring | 807.8ms
+[200] req-937d0aa2 | monitoring | 806.5ms
+[200] req-1540113a | monitoring | 808.0ms
+[200] req-b51d28a1 | monitoring | 807.5ms

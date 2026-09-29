@@ -1,0 +1,26 @@
+# practice rag_slow — slowest-type request req-1d400c42
+trace_id=7e259a91af74ae4a2684e08b388a5c05  user_id_hash=64f6ec689229  session_id=s05  env=dev
+- AGENT lab-agent-run | 2653 ms | level=DEFAULT
+    metadata={'correlation_id': 'req-1d400c42', 'feature': 'qa', 'model': 'claude-sonnet-4-5', 'prompt_name': 'day13-chat', 'prompt_label': 'production', 'prompt_version': 1, 'prompt_source': 'langfuse', 'doc_count': 1}
+  - RETRIEVER retrieval | 2501 ms | level=DEFAULT
+      metadata={'correlation_id': 'req-1d400c42', 'feature': 'qa', 'model': 'claude-sonnet-4-5', 'doc_count': 1}
+  - SPAN prompt-resolve | 0 ms | level=DEFAULT
+      metadata={'correlation_id': 'req-1d400c42', 'feature': 'qa', 'model': 'claude-sonnet-4-5'}
+  - GENERATION llm-generation | 151 ms | level=DEFAULT | model=claude-sonnet-4-5 | usage={'input': 33, 'output': 99, 'total': 132} | cost_usd=0.001584 | ttft_s=0.05 | prompt=day13-chat v1
+      metadata={'correlation_id': 'req-1d400c42', 'feature': 'qa', 'model': 'claude-sonnet-4-5', 'prompt_version': 1, 'ttft_ms': 50}
+
+# practice tool_fail — req-fd167eed
+trace_id=95796822baffe10e881204e89fef83ff  user_id_hash=2055254ee30a  session_id=s01  env=dev
+- AGENT lab-agent-run | 0 ms | level=ERROR | status='Vector store timeout'
+    metadata={'correlation_id': 'req-fd167eed', 'feature': 'qa', 'model': 'claude-sonnet-4-5'}
+  - RETRIEVER retrieval | 0 ms | level=ERROR | status='Vector store timeout'
+      metadata={'correlation_id': 'req-fd167eed', 'feature': 'qa', 'model': 'claude-sonnet-4-5'}
+
+# normal request (waterfall reference) — req-518e5653
+trace_id=6f045edb50b5922c6e2b46bc14409b67  user_id_hash=2055254ee30a  session_id=s01  env=dev
+- AGENT lab-agent-run | 154 ms | level=DEFAULT
+    metadata={'correlation_id': 'req-518e5653', 'feature': 'qa', 'model': 'claude-sonnet-4-5', 'prompt_name': 'day13-chat', 'prompt_label': 'production', 'prompt_version': 1, 'prompt_source': 'langfuse', 'doc_count': 1}
+  - RETRIEVER retrieval | 0 ms | level=DEFAULT
+      metadata={'correlation_id': 'req-518e5653', 'feature': 'qa', 'model': 'claude-sonnet-4-5', 'doc_count': 1}
+  - GENERATION llm-generation | 152 ms | level=DEFAULT | model=claude-sonnet-4-5 | usage={'input': 36, 'output': 129, 'total': 165} | cost_usd=0.002043 | ttft_s=0.05 | prompt=day13-chat v1
+      metadata={'correlation_id': 'req-518e5653', 'feature': 'qa', 'model': 'claude-sonnet-4-5', 'prompt_version': 1, 'ttft_ms': 50}

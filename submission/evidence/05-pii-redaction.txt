@@ -1,0 +1,11 @@
+session | correlation_id | payload.message_preview as written to the log
+s01     | req-b13b15eb | What is your refund policy? My email is [REDACTED_EMAIL]
+s05     | req-f014f70c | Here is my phone [REDACTED_PHONE_VN], what should be logged?
+s09     | req-3e874c23 | What is the policy for PII and credit card [REDACTED_CREDIT_CARD]?
+
+Raw PII matches in data/logs.jsonl (63 lines), using the validator's detectors:
+  email        0
+  phone_vn     0
+  cccd         0
+  credit_card  0
+  [REDACTED_*] markers written: 6
