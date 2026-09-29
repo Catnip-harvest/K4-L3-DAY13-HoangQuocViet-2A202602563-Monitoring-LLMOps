@@ -3,20 +3,35 @@ from __future__ import annotations
 import hashlib
 import re
 
+# Order matters: longer digit shapes run first, so a card or CCCD number is redacted
+# as a whole before the shorter phone pattern can match a slice of it.
 PII_PATTERNS: dict[str, str] = {
     "email": r"[\w\.-]+@[\w\.-]+\.\w+",
-    "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
+    "credit_card": r"\b(?:\d{4}[- ]?){3}\d{4}\b|\b\d{4}[- ]?\d{6}[- ]?\d{5}\b",
     "cccd": r"\b\d{12}\b",
-    "credit_card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
-    # TODO: Add more patterns (e.g., Passport, Vietnamese address keywords)
+    "phone_vn": r"(?<!\d)(?:\+84|0)(?:[ .-]?\d){9}(?!\d)",
+    "passport_vn": r"\b[A-Z]\d{7}\b",
 }
+
+COMPILED_PII_PATTERNS = {name: re.compile(pattern) for name, pattern in PII_PATTERNS.items()}
 
 
 def scrub_text(text: str) -> str:
     safe = text
-    for name, pattern in PII_PATTERNS.items():
-        safe = re.sub(pattern, f"[REDACTED_{name.upper()}]", safe)
+    for name, pattern in COMPILED_PII_PATTERNS.items():
+        safe = pattern.sub(f"[REDACTED_{name.upper()}]", safe)
     return safe
+
+
+def scrub_value(value):
+    """Scrub every string inside a log value, however deeply it is nested."""
+    if isinstance(value, str):
+        return scrub_text(value)
+    if isinstance(value, dict):
+        return {key: scrub_value(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [scrub_value(item) for item in value]
+    return value
 
 
 def summarize_text(text: str, max_len: int = 80) -> str:

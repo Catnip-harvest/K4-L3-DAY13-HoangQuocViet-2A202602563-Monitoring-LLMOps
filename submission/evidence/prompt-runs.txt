@@ -1,0 +1,18 @@
+## 2026-09-29T08:59:29Z state before runs
+day13-chat v1  labels=['baseline', 'production']
+day13-chat v2  labels=['candidate', 'latest']
+## same input, label=baseline then label=candidate
+{"service": "api", "payload": {"message_preview": "Explain why metrics traces and logs work together"}, "event": "request_received", "env": "dev", "session_id": "s-prompt-ab", "correlation_id": "req-7b57dfed", "model": "claude-sonnet-4-5", "feature": "qa", "user_id_hash": "1ec7627271d1", "level": "info", "ts": "2026-09-29T08:59:33.034011Z"}
+{"service": "api", "latency_ms": 668, "ttft_ms": 50, "tokens_in": 32, "tokens_out": 130, "cost_usd": 0.002046, "quality_score": 0.8, "tool_name": "retrieval", "tool_success": true, "payload": {"answer_preview": "Starter answer. You should improve this output logic and add better quality chec..."}, "event": "response_sent", "env": "dev", "session_id": "s-prompt-ab", "correlation_id": "req-7b57dfed", "model": "claude-sonnet-4-5", "feature": "qa", "user_id_hash": "1ec7627271d1", "trace_id": "a764ff178b2e7cf70fa2eb29eaf9e6f6", "level": "info", "ts": "2026-09-29T08:59:33.855902Z"}
+label=baseline status=200 correlation_id=req-7b57dfed
+{"service": "api", "payload": {"message_preview": "Explain why metrics traces and logs work together"}, "event": "request_received", "feature": "qa", "user_id_hash": "1ec7627271d1", "session_id": "s-prompt-ab", "model": "claude-sonnet-4-5", "correlation_id": "req-d8bd9de6", "env": "dev", "level": "info", "ts": "2026-09-29T08:59:35.995045Z"}
+{"service": "api", "latency_ms": 519, "ttft_ms": 50, "tokens_in": 48, "tokens_out": 97, "cost_usd": 0.001599, "quality_score": 0.8, "tool_name": "retrieval", "tool_success": true, "payload": {"answer_preview": "Starter answer. You should improve this output logic and add better quality chec..."}, "event": "response_sent", "trace_id": "b69c01508b837132c2263acec7b3456c", "feature": "qa", "user_id_hash": "1ec7627271d1", "session_id": "s-prompt-ab", "model": "claude-sonnet-4-5", "correlation_id": "req-d8bd9de6", "env": "dev", "level": "info", "ts": "2026-09-29T08:59:36.725258Z"}
+label=candidate status=200 correlation_id=req-d8bd9de6
+## 2026-09-29T09:00:00Z promote production -> v2
+day13-chat v1  labels=['baseline']
+day13-chat v2  labels=['candidate', 'latest', 'production']
+label=production status=200 correlation_id=req-064fa015
+## 2026-09-29T09:00:05Z rollback production -> v1
+day13-chat v1  labels=['baseline', 'production']
+day13-chat v2  labels=['candidate', 'latest']
+label=production status=200 correlation_id=req-c7ca0cd5

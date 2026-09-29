@@ -36,6 +36,16 @@ def get_langfuse_client():
     return get_client()
 
 
+def current_trace_id() -> str | None:
+    """Trace ID of the active Langfuse trace, so a log line can point straight at it."""
+    if not tracing_enabled():
+        return None
+    try:
+        return get_client().get_current_trace_id()
+    except Exception:  # tracing must never break a request
+        return None
+
+
 def tracing_enabled() -> bool:
     return LANGFUSE_SDK_AVAILABLE and bool(
         os.getenv("LANGFUSE_PUBLIC_KEY") and os.getenv("LANGFUSE_SECRET_KEY")
