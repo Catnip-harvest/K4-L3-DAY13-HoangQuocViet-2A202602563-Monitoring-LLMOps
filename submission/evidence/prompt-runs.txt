@@ -16,3 +16,6 @@ label=production status=200 correlation_id=req-064fa015
 day13-chat v1  labels=['baseline', 'production']
 day13-chat v2  labels=['candidate', 'latest']
 label=production status=200 correlation_id=req-c7ca0cd5
+## 2026-09-29T09:42:42Z read-back after UI promote (16:36:05 ICT screenshot 10a) and UI rollback
+day13-chat v1  labels=['baseline', 'production']
+day13-chat v2  labels=['candidate', 'latest']
