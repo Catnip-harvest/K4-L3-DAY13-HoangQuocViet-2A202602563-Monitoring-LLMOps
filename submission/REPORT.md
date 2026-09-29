@@ -14,23 +14,26 @@
 
 ## 2. Evidence index
 
-| Evidence | Đường dẫn |
-|---|---|
-| Baseline (trước khi sửa) | `evidence/baseline/` |
-| Pytest cuối | [`evidence/01-pytest.txt`](evidence/01-pytest.txt) |
-| Log validator | [`evidence/02-log-validator.txt`](evidence/02-log-validator.txt) |
-| Dashboard validator | [`evidence/03-dashboard-validator.txt`](evidence/03-dashboard-validator.txt) |
-| Structured log | [`evidence/04-structured-log.txt`](evidence/04-structured-log.txt) |
-| PII redaction | [`evidence/05-pii-redaction.txt`](evidence/05-pii-redaction.txt) |
-| Trace list | [`evidence/06-trace-list.png`](evidence/06-trace-list.png), export đầy đủ [`evidence/06-trace-list.txt`](evidence/06-trace-list.txt) |
-| Trace waterfall | [`evidence/07-trace-waterfall.png`](evidence/07-trace-waterfall.png), span tree [`evidence/07-trace-waterfall.txt`](evidence/07-trace-waterfall.txt) |
-| Trace metadata | [`evidence/08-trace-metadata.png`](evidence/08-trace-metadata.png) |
-| Prompt versions | [`evidence/09-prompt-versions.png`](evidence/09-prompt-versions.png) |
-| Prompt promote / rollback | [`evidence/10a-prompt-promote-v2.png`](evidence/10a-prompt-promote-v2.png), [`evidence/10b-prompt-rollback-v1.png`](evidence/10b-prompt-rollback-v1.png), log SDK [`evidence/prompt-runs.txt`](evidence/prompt-runs.txt) |
-| Dashboard runtime | [`evidence/11-dashboard-overview.png`](evidence/11-dashboard-overview.png) |
-| Incident metric | [`evidence/12-incident-metric.png`](evidence/12-incident-metric.png), [`evidence/12-incident-metric.txt`](evidence/12-incident-metric.txt), lệnh chạy [`evidence/12-incident-run.txt`](evidence/12-incident-run.txt) |
-| Incident log | [`evidence/13-incident-log.txt`](evidence/13-incident-log.txt) |
-| Incident trace | [`evidence/14-incident-trace.txt`](evidence/14-incident-trace.txt) |
+| # | Evidence | Ảnh | Output/text đi kèm |
+|---|---|---|---|
+| — | Baseline (trước khi sửa) | | [`evidence/baseline/`](evidence/baseline/) |
+| 01 | Pytest cuối | [`01-pytest.png`](evidence/01-pytest.png) | [`01-pytest.txt`](evidence/01-pytest.txt) |
+| 02 | Log validator | [`02-log-validator.png`](evidence/02-log-validator.png) | [`02-log-validator.txt`](evidence/02-log-validator.txt) |
+| 03 | Dashboard validator | [`03-dashboard-validator.png`](evidence/03-dashboard-validator.png) | [`03-dashboard-validator.txt`](evidence/03-dashboard-validator.txt) |
+| 04 | Structured log | [`04-structured-log.png`](evidence/04-structured-log.png) | [`04-structured-log.txt`](evidence/04-structured-log.txt) |
+| 05 | PII redaction | [`05-pii-redaction.png`](evidence/05-pii-redaction.png) | [`05-pii-redaction.txt`](evidence/05-pii-redaction.txt) |
+| 06 | Trace list (Langfuse) | [`06-trace-list.png`](evidence/06-trace-list.png) | [`06-trace-list.txt`](evidence/06-trace-list.txt) |
+| 07 | Trace waterfall (Langfuse) | [`07-trace-waterfall.png`](evidence/07-trace-waterfall.png) | [`07-trace-waterfall.txt`](evidence/07-trace-waterfall.txt) |
+| 08 | Trace metadata — generation (Langfuse) | [`08-trace-metadata.png`](evidence/08-trace-metadata.png) | |
+| 09 | Prompt versions (Langfuse) | [`09-prompt-versions.png`](evidence/09-prompt-versions.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
+| 10a | Promote `production` → v2 (Langfuse) | [`10a-prompt-promote-v2.png`](evidence/10a-prompt-promote-v2.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
+| 10b | Rollback `production` → v1 (Langfuse) | [`10b-prompt-rollback-v1.png`](evidence/10b-prompt-rollback-v1.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
+| 11 | Dashboard runtime, 60 phút | [`11-dashboard-overview.png`](evidence/11-dashboard-overview.png) | |
+| 12 | Incident metric | [`12-incident-metric.png`](evidence/12-incident-metric.png) | [`12-incident-metric.txt`](evidence/12-incident-metric.txt), [`12-incident-run.txt`](evidence/12-incident-run.txt) |
+| 13 | Incident log | [`13-incident-log.png`](evidence/13-incident-log.png) | [`13-incident-log.txt`](evidence/13-incident-log.txt) |
+| 14 | Incident trace (Langfuse) | [`14-incident-trace.png`](evidence/14-incident-trace.png) | [`14-incident-trace.txt`](evidence/14-incident-trace.txt) |
+
+Ảnh 06–10b và 14 chụp từ Langfuse UI của project cá nhân; dòng `scope.attributes.public_key` (Langfuse SDK tự chép public key vào metadata) đã được che đen. Ảnh 01–05 và 13 là output thật của lệnh, được `scripts/render_evidence.py` vẽ lại thành ảnh terminal; mỗi ảnh ghi lệnh và thời điểm chạy. Ảnh 11–12 do `scripts/build_dashboard.py` sinh từ `data/logs.jsonl`.
 
 Các file `.txt` là output thật của lệnh trong repo (`scripts/export_traces.py` đọc trực tiếp từ Langfuse API của project cá nhân); public key mà Langfuse SDK tự chép vào metadata đã được lọc bỏ trước khi ghi.
 

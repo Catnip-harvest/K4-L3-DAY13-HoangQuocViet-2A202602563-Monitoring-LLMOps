@@ -1,8 +1,11 @@
-# data/sample_queries.jsonl contains a fake email (u01), phone (u05) and card number (u09).
-# The same requests as they were written to data/logs.jsonl:
-{"service": "api", "payload": {"message_preview": "What is your refund policy? My email is [REDACTED_EMAIL]"}, "event": "request_received", "feature": "qa", "env": "dev", "correlation_id": "req-518e5653", "session_id": "s01", "user_id_hash": "2055254ee30a", "model": "claude-sonnet-4-5", "level": "info", "ts": "2026-09-29T08:58:02.006668Z"}
-{"service": "api", "payload": {"message_preview": "Here is my phone [REDACTED_PHONE_VN], what should be logged?"}, "event": "request_received", "feature": "qa", "env": "dev", "correlation_id": "req-b834c679", "session_id": "s05", "user_id_hash": "64f6ec689229", "model": "claude-sonnet-4-5", "level": "info", "ts": "2026-09-29T08:58:01.694212Z"}
-{"service": "api", "payload": {"message_preview": "What is the policy for PII and credit card [REDACTED_CREDIT_CARD]?"}, "event": "request_received", "feature": "qa", "env": "dev", "correlation_id": "req-eafbb35f", "session_id": "s09", "user_id_hash": "4d14d5d4f719", "model": "claude-sonnet-4-5", "level": "info", "ts": "2026-09-29T08:58:02.632566Z"}
+session | correlation_id | payload.message_preview as written to the log
+s01     | req-b13b15eb | What is your refund policy? My email is [REDACTED_EMAIL]
+s05     | req-f014f70c | Here is my phone [REDACTED_PHONE_VN], what should be logged?
+s09     | req-3e874c23 | What is the policy for PII and credit card [REDACTED_CREDIT_CARD]?
 
-# Raw-PII search over the whole log file (validator's own detectors):
-0
+Raw PII matches in data/logs.jsonl (63 lines), using the validator's detectors:
+  email        0
+  phone_vn     0
+  cccd         0
+  credit_card  0
+  [REDACTED_*] markers written: 6
