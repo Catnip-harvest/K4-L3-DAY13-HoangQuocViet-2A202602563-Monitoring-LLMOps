@@ -1,0 +1,38 @@
+# Langfuse trace for correlation_id req-64e0fe07 (from the 13-incident-log line), project day13-k4-l3a-2A202602563
+trace_id=ea0bf2807430d4ed9aa1316a2289698c  user_id_hash=4570299f37e2  session_id=k4-l3a-challenge-s04  env=dev
+- AGENT lab-agent-run | 2654 ms | level=DEFAULT
+    metadata={'correlation_id': 'req-64e0fe07', 'feature': 'monitoring', 'model': 'claude-sonnet-4-5', 'prompt_name': 'day13-chat', 'prompt_label': 'production', 'prompt_version': 1, 'prompt_source': 'langfuse', 'doc_count': 1}
+  - RETRIEVER retrieval | 2500 ms | level=DEFAULT
+      metadata={'correlation_id': 'req-64e0fe07', 'feature': 'monitoring', 'model': 'claude-sonnet-4-5', 'doc_count': 1}
+  - SPAN prompt-resolve | 0 ms | level=DEFAULT
+      metadata={'correlation_id': 'req-64e0fe07', 'feature': 'monitoring', 'model': 'claude-sonnet-4-5'}
+  - GENERATION llm-generation | 152 ms | level=DEFAULT | model=claude-sonnet-4-5 | usage={'input': 36, 'output': 113, 'total': 149} | cost_usd=0.001803 | ttft_s=0.05 | prompt=day13-chat v1
+      metadata={'correlation_id': 'req-64e0fe07', 'feature': 'monitoring', 'model': 'claude-sonnet-4-5', 'prompt_version': 1, 'ttft_ms': 50}
+
+# All challenge-window traces (09:18-09:20 UTC) for comparison
+start_utc | trace_id | correlation_id | total_ms | retrieval_ms | llm_ms | tok_in/out | cost_usd | prompt | status
+2026-09-29T09:18:28.270Z | fd6f968891075bb0c510dbdf6fe36695 | req-b13b15eb | 725 | 0 | 152 | 36/130 | 0.002058 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.000Z | 9493cbd55dcf16fd368a051999661258 | req-af56aba5 | 157 | 0 | 153 | 39/135 | 0.002142 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.170Z | 0392a0e6da57ad783fd03373616df7f3 | req-f014f70c | 153 | 0 | 152 | 33/143 | 0.002244 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.327Z | 166f9bf0c8e25a4785f64e6bc2e560dc | req-f87eb199 | 153 | 2 | 151 | 32/148 | 0.002316 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.484Z | 850f75728cd2e3a352a88fbd9c8fa58e | req-cf4d087a | 153 | 1 | 152 | 43/154 | 0.002439 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.644Z | ba298b011a07887b8f3572cd245e9936 | req-0578ac32 | 153 | 0 | 152 | 35/113 | 0.001800 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.800Z | cdb4746a844cbfb424d809eae424d460 | req-ad140c19 | 153 | 0 | 152 | 29/109 | 0.001722 | day13-chat@production v1 | OK
+2026-09-29T09:18:29.957Z | 0a9d772c4362c8e5bc0e9379979a6398 | req-35e9cd70 | 155 | 1 | 152 | 27/97 | 0.001536 | day13-chat@production v1 | OK
+2026-09-29T09:18:30.116Z | e7acefc3a8fa7185602a086a1ebeea09 | req-3e874c23 | 153 | 1 | 152 | 36/83 | 0.001353 | day13-chat@production v1 | OK
+2026-09-29T09:18:30.273Z | 47e221756f82e33b537312728989d5ac | req-744b21dc | 154 | 0 | 153 | 28/173 | 0.002679 | day13-chat@production v1 | OK
+2026-09-29T09:18:30.960Z | 2ec83980ce21a78ba7a7657013fb9af5 | req-b9d8f99b | 154 | 0 | 152 | 43/129 | 0.002064 | day13-chat@production v1 | OK
+2026-09-29T09:18:31.117Z | 8671e8b5c92fab9759b04fbd262b2536 | req-c454d2a0 | 153 | 0 | 151 | 33/123 | 0.001944 | day13-chat@production v1 | OK
+2026-09-29T09:18:31.272Z | 044363d6a13dd85b77f538fee4bccbe7 | req-c60cdd28 | 154 | 0 | 151 | 36/162 | 0.002538 | day13-chat@production v1 | OK
+2026-09-29T09:18:31.429Z | 2ae80bb5db7da9735256c62c8150a6cf | req-c7642b84 | 154 | 0 | 152 | 39/134 | 0.002127 | day13-chat@production v1 | OK
+2026-09-29T09:18:31.587Z | 940596d0af08e55b775068d964d444f1 | req-1b24f7ce | 154 | 0 | 152 | 32/155 | 0.002421 | day13-chat@production v1 | OK
+2026-09-29T09:18:31.752Z | dd6f3a1c4884c92a033ffabb68693fe1 | req-077e120b | 153 | 1 | 151 | 29/89 | 0.001422 | day13-chat@production v1 | OK
+2026-09-29T09:18:31.908Z | 3d87f6be075eaf4f19c752442220d98d | req-7a2932dd | 154 | 1 | 152 | 27/159 | 0.002466 | day13-chat@production v1 | OK
+2026-09-29T09:18:32.074Z | 36b0f7579b4d506ee8d45aad8df23fdf | req-45493fb4 | 153 | 0 | 152 | 36/120 | 0.001908 | day13-chat@production v1 | OK
+2026-09-29T09:18:32.229Z | ac1b971911fd548ff0bdd34badeaac3e | req-8a92fc3c | 154 | 0 | 152 | 35/156 | 0.002445 | day13-chat@production v1 | OK
+2026-09-29T09:18:32.387Z | e74b4e277f1dca6b7f37ceb891840464 | req-2bdfd7e1 | 153 | 0 | 151 | 28/175 | 0.002709 | day13-chat@production v1 | OK
+2026-09-29T09:19:03.200Z | ea0bf2807430d4ed9aa1316a2289698c | req-64e0fe07 | 2654 | 2500 | 152 | 36/113 | 0.001803 | day13-chat@production v1 | OK
+2026-09-29T09:19:05.857Z | debf3ff920a12cd6681d0cb14260cc68 | req-0157e290 | 2653 | 2500 | 152 | 35/91 | 0.001470 | day13-chat@production v1 | OK
+2026-09-29T09:19:08.515Z | 6b561cd6b2086788cf5042df58803149 | req-2122c23a | 2655 | 2501 | 152 | 34/94 | 0.001512 | day13-chat@production v1 | OK
+2026-09-29T09:19:11.174Z | 0a4e279e54bed31765598b126c222a26 | req-b2b6ebd0 | 2653 | 2501 | 151 | 35/119 | 0.001890 | day13-chat@production v1 | OK
+2026-09-29T09:19:13.831Z | ca0c6f94308791a8a3d290fcee2dc309 | req-06aa77ee | 2655 | 2500 | 153 | 35/157 | 0.002460 | day13-chat@production v1 | OK

@@ -73,6 +73,11 @@ def status_of(value: float, panel: dict) -> str:
     return "OK" if ok else "BREACH"
 
 
+# Early-warning line of alert slow_responses_p95 in config/alert_rules.yaml; it sits below
+# the SLO line so the chart shows when the alert fires before the SLO is breached.
+LATENCY_ALERT_MS = 2000
+
+
 def panel_latency(ax, panel, responses):
     times = [e["_ts"] for e in responses]
     latencies = [e["latency_ms"] for e in responses]
@@ -80,9 +85,11 @@ def panel_latency(ax, panel, responses):
     ax.plot(times, latencies, "o", ms=3, color=SERIES_COLORS[0], label="latency_ms per request")
     ax.plot(times, ttfts, "o", ms=3, color=SERIES_COLORS[1], label="ttft_ms per request")
     draw_threshold(ax, panel)
+    ax.axhline(LATENCY_ALERT_MS, color="#e08a1e", linestyle=":", linewidth=1.4, label=f"alert slow_responses_p95 > {LATENCY_ALERT_MS}")
     p50, p95, p99 = (percentile(latencies, p) for p in (50, 95, 99))
     ttft_p95 = percentile(ttfts, 95)
-    return f"P50 {p50:.0f} · P95 {p95:.0f} · P99 {p99:.0f} · TTFT P95 {ttft_p95:.0f} ms", p95
+    alert = "  ALERT FIRING" if p95 > LATENCY_ALERT_MS else ""
+    return f"P50 {p50:.0f} · P95 {p95:.0f} · P99 {p99:.0f} · TTFT P95 {ttft_p95:.0f} ms{alert}", p95
 
 
 def panel_traffic(ax, panel, received):

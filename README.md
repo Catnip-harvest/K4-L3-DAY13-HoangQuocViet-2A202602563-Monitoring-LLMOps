@@ -167,6 +167,21 @@ Ví dụ: `K4-L3-DAY13-NguyenVanAn-123456-Monitoring-LLMOps`. Mỗi học viên 
 
 Không push bài làm trực tiếp lên repo đề bài và không dùng chung repo bài nộp với học viên khác.
 
+## Script bổ sung trong bài nộp
+
+Chạy từ thư mục gốc, sau khi API đang chạy và `.env` có key của project cá nhân. Nếu tài khoản Langfuse ở region JP/US, đặt `LANGFUSE_BASE_URL` đúng region (ví dụ `https://jp.cloud.langfuse.com`); sai region trả 401 dù key đúng.
+
+```bash
+python scripts/manage_prompts.py create              # day13-chat v1 (baseline, production) + v2 (candidate)
+python scripts/manage_prompts.py promote --version 2 # chuyển production sang v2; --version 1 để rollback
+python scripts/prompt_label_run.py --label candidate # gửi 1 request qua app với label chỉ định
+python scripts/build_dashboard.py                    # 6 panel từ data/logs.jsonl -> submission/evidence/11-dashboard-overview.png
+python scripts/export_traces.py --minutes 60         # bảng trace từ Langfuse (API v2 observations)
+python scripts/export_traces.py --correlation-id req-1a2b3c4d   # span tree của một request
+```
+
+Mọi log line sau khi agent bắt đầu có `trace_id`, nên có thể đi thẳng từ log sang trace.
+
 ## Tài liệu trong repo
 
 - [SETUP.md](docs/SETUP.md): cài đặt và xử lý lỗi môi trường.
