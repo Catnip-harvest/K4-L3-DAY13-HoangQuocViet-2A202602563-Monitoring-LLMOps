@@ -26,8 +26,8 @@
 | 07 | Trace waterfall (Langfuse) | [`07-trace-waterfall.png`](evidence/07-trace-waterfall.png) | [`07-trace-waterfall.txt`](evidence/07-trace-waterfall.txt) |
 | 08 | Trace metadata — generation (Langfuse) | [`08-trace-metadata.png`](evidence/08-trace-metadata.png) | |
 | 09 | Prompt versions (Langfuse) | [`09-prompt-versions.png`](evidence/09-prompt-versions.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
-| 10a | Promote `production` → v2 (Langfuse) | [`10a-prompt-promote-v2.png`](evidence/10a-prompt-promote-v2.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
-| 10b | Rollback `production` → v1 (Langfuse) | [`10b-prompt-rollback-v1.png`](evidence/10b-prompt-rollback-v1.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
+| 10a | Promote `production` → v2 (Langfuse) | [`10a-production-v2.png`](evidence/10a-production-v2.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
+| 10b | Rollback `production` → v1 (Langfuse) | [`10b-rollback-v1.png`](evidence/10b-rollback-v1.png) | [`prompt-runs.txt`](evidence/prompt-runs.txt) |
 | 11 | Dashboard runtime, 60 phút | [`11-dashboard-overview.png`](evidence/11-dashboard-overview.png) | |
 | 12 | Incident metric | [`12-incident-metric.png`](evidence/12-incident-metric.png) | [`12-incident-metric.txt`](evidence/12-incident-metric.txt), [`12-incident-run.txt`](evidence/12-incident-run.txt) |
 | 13 | Incident log | [`13-incident-log.png`](evidence/13-incident-log.png) | [`13-incident-log.txt`](evidence/13-incident-log.txt) |
